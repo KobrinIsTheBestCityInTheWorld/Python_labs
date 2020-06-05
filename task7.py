@@ -16,7 +16,10 @@ def main ():
 	while True: 
 		print ("Enter the number of Leonardo's number")
 		n = int(input())
-		print (leonardo (n))
+		try:
+			print (leonardo (n))
+		except: 
+			print ("To big number")
 		print ("One more time?")
 		if input() == "No": 
 			break
