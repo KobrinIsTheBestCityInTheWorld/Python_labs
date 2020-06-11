@@ -1,3 +1,7 @@
+from alive_progress import alive_bar
+import time
+
+
 def Merge_it(stroka):
 	if len(stroka) > 1:
 		middle = len(stroka)//2
@@ -36,8 +40,11 @@ def main():
 		new_stroka = " ".join(sortirovka)
 		file_lines.append(new_stroka)
 	new_file_lines = Merge_it(file_lines)
-	for i in range(len(new_file_lines)):
-		f.write(new_file_lines[i] + "\n")
+	with alive_bar(len(new_file_lines)) as bar:
+		for i in range(len(new_file_lines)):
+			f.write(new_file_lines[i] + "\n")
+			bar()
+			time.sleep(0.005)
 	f.close()
 	t.close()
 
