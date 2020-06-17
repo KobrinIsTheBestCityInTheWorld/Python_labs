@@ -1,4 +1,11 @@
 def flatten_it(obj):
+	"""Функция-генератор, которая линеалинизирует интерируемый объект
+
+
+	Args: obj -- интерируемый объект
+
+
+	"""
 	try:
 		for i in obj:
 			if isinstance(i, str):
@@ -9,6 +16,7 @@ def flatten_it(obj):
 		yield obj
 	except RecursionError:
 		yield obj 
+
 
 if __name__ == '__main__':
 	L = [[[1, 2, 3], [4, 5]], 6, [[[['dog'],['world'],['python']],[7,8]]],[9],(45),{54}]
