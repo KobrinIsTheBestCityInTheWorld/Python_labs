@@ -1,7 +1,17 @@
-import math
 import sys
+import argparse 
+
 
 def power_of_two (n):
+	"""Определяет является ли число степенью 2
+
+
+	Args: n -- число, которое проверяется
+	Return: true -- является степенью 2
+			false -- не является степенью 2
+
+
+	"""
 	if not isinstance(n, int):
 		raise NameError('n must be int')
 	if n <= 0:
@@ -12,16 +22,26 @@ def power_of_two (n):
 		return False
 
 def main ():
-	while True: 
-		print ("Enter the number")
-		n = int(input())
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-n", type=int)
+	args = parser.parse_args()
+	if args.n is not None:
 		try:
-			print (power_of_two (n))
+			print(power_of_two(args.n))
 		except: 
-			print ("To big number")
-		print ("One more time?")
-		if input() == "No": 
+			print("Error")
+		print("One more time?")
+		if input() in ["No","NO","no","nO","Нет","нет"]: 
+			sys.exit()
+	while True: 
+		n = input("Enter the number: ")
+		try:
+			print(power_of_two(int(n)))
+		except: 
+			print("Error")
+		print("One more time?")
+		if input() in ["No","NO","no","nO","Нет","нет"]: 
 			break
 
 if __name__ == '__main__':
-  	main()
+	main()
